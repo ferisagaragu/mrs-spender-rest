@@ -54,7 +54,13 @@ class WebSecurityConfig: WebSecurityConfigurerAdapter() {
 			.authorizeRequests()
 			.antMatchers(
 				"/api/**/",
-				"/rest/auth/**"
+				"/app/**",
+				"/rest/auth/**",
+				"/*.ttf",
+				"/*.woff",
+				"/*.woff2",
+				"/*.css",
+				"/*.js"
 			).permitAll()
 			.anyRequest()
 			.authenticated()
