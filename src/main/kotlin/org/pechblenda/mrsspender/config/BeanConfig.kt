@@ -2,8 +2,8 @@ package org.pechblenda.mrsspender.config
 
 import org.pechblenda.auth.AuthController
 import org.pechblenda.doc.Documentation
-import org.pechblenda.doc.entity.ApiInfo
-import org.pechblenda.doc.entity.Credential
+import org.pechblenda.mrsspender.controller.ItemController
+import org.pechblenda.mrsspender.controller.RoomController
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
@@ -15,26 +15,10 @@ class BeanConfig {
 
 	@Bean
 	fun documentation(): Documentation {
-		val bodyRequest = LinkedHashMap<String, String>()
-		bodyRequest["userName"] = "ferisagaragu@gmail.com"
-		bodyRequest["password"] = "fernnypay95"
-
 		return Documentation(
-			ApiInfo(
-				title = "Wedding App",
-				description = "Servicios REST de mi boda",
-				iconUrl = "",
-				version = "0.0.1",
-				credentials = listOf(
-					Credential(
-						name = "User Root",
-						endPoint = "http://localhost/rest/auth/sign-in",
-						bodyRequest = bodyRequest,
-						tokenMapping = "data.session.token"
-					)
-				)
-			),
-			AuthController::class
+			AuthController::class,
+			RoomController::class,
+			ItemController::class
 		)
 	}
 
